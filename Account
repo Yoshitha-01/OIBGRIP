@@ -1,0 +1,121 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class Account {
+	Scanner sc=new Scanner(System.in);
+	
+	String user;
+	int bal=0;
+	String str;
+	public void functionalities() {
+		System.out.println("Select your choice");
+		System.out.println("1. withdraw");
+		System.out.println("2. deposit");
+		System.out.println("3. transfer");
+		System.out.println("4. balance");
+		System.out.println("5. exit");
+		System.out.println("Enter your choice");
+		int ch=sc.nextInt();
+		Account usr=new Account();
+		switch(ch) {
+		case 1:
+			bal=usr.withdraw(bal);
+			System.out.println("Current balance is"+bal);
+			break;
+		case 2:
+			bal=usr.deposit(bal);
+			System.out.println("Current balance is"+bal);
+			break;
+		case 3:
+			bal=usr.transfer(bal);
+			System.out.println("Current balance is"+bal);
+			break;
+		case 4:
+			bal=usr.balance(bal);
+			System.out.println("Current balance is"+bal);
+			break;
+		case 5:
+			usr.quit();break;
+		default:
+			System.out.println("Invalid choice");
+			functionalities();
+		
+	
+		
+		
+	}
+	
+}
+	public int withdraw(int b) {
+		bal=b;
+		System.out.println("Enter amount you want to withdraw");
+		int amt=sc.nextInt();
+		try {
+			if(amt>bal) {
+				System.out.println("Insufficient amount to withdraw");
+			}
+			else {
+				bal-=amt;
+				System.out.println("Amount withdraw successfully");
+			}
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		System.out.println("Current balance is"+bal);
+		functionalities();
+		return bal;
+	}
+	public int deposit(int b) {
+		bal=b;
+		System.out.println("Enter amount you want to deposit");
+		int amt=sc.nextInt();
+		try {
+			if(amt<100000) {
+				bal+=amt;
+				System.out.println("Amount deposited successfully");
+			}
+			else {
+				
+				System.out.println("Cant deposit more than 1Lakh");
+			}
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		System.out.println("Current balance is"+bal);
+		functionalities();
+		return bal;
+	}
+	public int transfer(int b) {
+		bal=b;
+		System.out.println("Enter amount you want to transfer");
+		int amt=sc.nextInt();
+		System.out.println("Enter account num taht you want to transfer");
+		int acc=sc.nextInt();
+		try {
+			if(amt>bal) {
+				
+				System.out.println("Insufficient funds");
+			}
+			else {
+				bal-=amt;
+				System.out.println("Transferred successfully");
+			}
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		System.out.println("Current balance is"+bal);
+		functionalities();
+		return bal;
+	}
+	public int balance(int b) {
+		bal=b;
+		System.out.println("Current balance is"+bal);
+		
+		functionalities();
+		return bal;
+	}
+	public void quit() {
+		System.out.println("Thank you!!");
+	}
+				
+	}
