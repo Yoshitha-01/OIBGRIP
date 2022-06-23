@@ -1,0 +1,39 @@
+
+import java.util.HashMap;
+import java.util.Scanner;
+public class Login extends Account{
+	Scanner sc=new Scanner(System.in);
+	
+	HashMap<String,Integer> data=new HashMap <String,Integer>();
+	Account usr=new Account();
+	String user;
+	int pin;
+	public int logmeth() {
+		int x=1;
+		do {
+			try {
+				data.put("Yoshitha",1234);
+				data.put("Sweety",5678);
+				System.out.println("Welcome to ATM..");
+				System.out.println("Enter user name: ");
+				String usr=this.user=sc.next();
+				System.out.println("Enter pin: ");
+				this.pin=sc.nextInt();
+				
+			}
+			catch(Exception e) {
+				System.out.println(e.getMessage());
+				x=2;
+			}
+			if(data.containsKey(this.user)&& data.get(this.user)==this.pin) {
+				System.out.println("Login Successfully");
+				usr.functionalities();
+			}
+			else
+				System.out.println("Bad Credentials");
+			}while(x==1);
+		return 0;
+		}
+	}
+
+
